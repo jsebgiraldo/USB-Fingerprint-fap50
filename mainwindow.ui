@@ -191,9 +191,16 @@
                  <widget class="QWidget" name="widget_12" native="true">
                   <layout class="QVBoxLayout" name="verticalLayout_8">
                    <item>
-                    <widget class="QPushButton" name="pushButton">
+                    <widget class="QPushButton" name="ConnectButton">
                      <property name="text">
                       <string>Connect</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="DisconnectButton">
+                     <property name="text">
+                      <string>Disconnect</string>
                      </property>
                     </widget>
                    </item>
@@ -210,7 +217,7 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QRadioButton" name="radioButton">
+                    <widget class="QRadioButton" name="radio_status_devices">
                      <property name="text">
                       <string>Disconnected</string>
                      </property>
@@ -246,11 +253,16 @@
                    <item>
                     <widget class="QTabWidget" name="tabWidget">
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
-                     <widget class="QWidget" name="tab">
+                     <widget class="QWidget" name="tab_4">
                       <attribute name="title">
                        <string>Capture</string>
+                      </attribute>
+                     </widget>
+                     <widget class="QWidget" name="tab">
+                      <attribute name="title">
+                       <string>Enroll</string>
                       </attribute>
                       <layout class="QHBoxLayout" name="horizontalLayout_6">
                        <item>
@@ -340,7 +352,7 @@
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_11">
                                 <item>
-                                 <widget class="QPushButton" name="pushButton_4">
+                                 <widget class="QPushButton" name="CaptureLiveModeButton">
                                   <property name="text">
                                    <string>Live</string>
                                   </property>
@@ -459,11 +471,6 @@
                         </widget>
                        </item>
                       </layout>
-                     </widget>
-                     <widget class="QWidget" name="tab_4">
-                      <attribute name="title">
-                       <string>Enroll</string>
-                      </attribute>
                      </widget>
                      <widget class="QWidget" name="tab_3">
                       <attribute name="title">
