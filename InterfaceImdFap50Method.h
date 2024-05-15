@@ -179,10 +179,7 @@ typedef struct {
 } ImageStatus;
 
 
-extern "C" {
-__declspec(dllimport) IMD_RESULT __stdcall device_reset();
-__declspec(dllimport) SystemProperty __stdcall get_system_property();
-}
+
 
 
 

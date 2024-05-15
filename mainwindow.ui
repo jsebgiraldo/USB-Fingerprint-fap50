@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1290</width>
-    <height>881</height>
+    <width>1917</width>
+    <height>1010</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,12 +15,39 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QWidget" name="widget" native="true">
       <property name="styleSheet">
        <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
        <property name="bottomMargin">
         <number>0</number>
        </property>
@@ -32,14 +59,40 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(85, 85, 127);</string>
+          <string notr="true">/* UI Properties */
+background-color: #616E85;
+opacity: 1;</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>IMD Logo</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="img.qrc">:/logo/img/icon.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -64,6 +117,9 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
             <item>
              <property name="text">
               <string>English</string>
@@ -82,6 +138,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(239, 242, 245);</string>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="bottomMargin">
            <number>0</number>
@@ -93,6 +152,9 @@
               <horstretch>4</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(239, 242, 245);</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <property name="bottomMargin">
@@ -107,7 +169,7 @@
                 </sizepolicy>
                </property>
                <property name="styleSheet">
-                <string notr="true"/>
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_4">
                 <item>
@@ -117,11 +179,25 @@
                     <widget class="QLabel" name="label_3">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <bold>true</bold>
                       </font>
                      </property>
+                     <property name="styleSheet">
+                      <string notr="true">font-size : 24px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
+                     </property>
                      <property name="text">
                       <string>Connection</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                      </property>
                     </widget>
                    </item>
@@ -141,8 +217,24 @@
                     <widget class="QGroupBox" name="groupBox">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <bold>false</bold>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">font-size : 18px;
+/* Layout Properties */
+top: 156px;
+left: 272px;
+width: 57px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
                      </property>
                      <property name="title">
                       <string>Device</string>
@@ -155,6 +247,22 @@
                           <horstretch>0</horstretch>
                           <verstretch>0</verstretch>
                          </sizepolicy>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">background-color: #EFF2F5;
+
+/* Layout Properties */
+top: 192px;
+left: 288px;
+width: 42px;
+height: 21px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: center;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
                         </property>
                         <item>
                          <property name="text">
@@ -176,6 +284,18 @@
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
+                        <property name="styleSheet">
+                         <string notr="true">/* Layout Properties */
+top: 248px;
+left: 272px;
+width: 554px;
+height: 44px;
+/* UI Properties */
+border: 4px solid var(--unnamed-color-eff2f5);
+border: 4px solid #EFF2F5;
+border-radius: 7px;
+opacity: 1;</string>
+                        </property>
                         <property name="text">
                          <string>Database path:</string>
                         </property>
@@ -192,6 +312,31 @@
                   <layout class="QVBoxLayout" name="verticalLayout_8">
                    <item>
                     <widget class="QPushButton" name="ConnectButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>128</width>
+                       <height>56</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">font-size : 18px;
+/* Layout Properties */
+top: 185px;
+left: 946px;
+width: 94px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: center;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+/* UI Properties */
+background-color: rgb(239, 242, 245);
+border-radius: 7px;
+opacity: 1;</string>
+                     </property>
                      <property name="text">
                       <string>Connect</string>
                      </property>
@@ -199,6 +344,31 @@
                    </item>
                    <item>
                     <widget class="QPushButton" name="DisconnectButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>128</width>
+                       <height>56</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">font-size : 18px;
+/* Layout Properties */
+top: 185px;
+left: 946px;
+width: 94px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: center;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+/* UI Properties */
+background-color: rgb(239, 242, 245);
+border-radius: 7px;
+opacity: 1;</string>
+                     </property>
                      <property name="text">
                       <string>Disconnect</string>
                      </property>
@@ -208,8 +378,20 @@
                     <widget class="QLabel" name="label_4">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <bold>true</bold>
                       </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">/* Layout Properties */
+font-size : 18px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
                      </property>
                      <property name="text">
                       <string>Status</string>
@@ -218,8 +400,54 @@
                    </item>
                    <item>
                     <widget class="QRadioButton" name="radio_status_devices">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>-1</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QRadioButton{
+/* Layout Properties */
+font-size : 18px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+
+}
+
+QRadioButton::indicator:checked { 
+background-color: green; 
+width: 12px; height: 12px;
+border-radius: 6.4px;
+}
+
+QRadioButton::indicator:unchecked { 
+background-color: red; 
+width: 12px; height: 12px;
+border-radius: 6.4px;
+}
+
+
+</string>
+                     </property>
                      <property name="text">
                       <string>Disconnected</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>12</width>
+                       <height>12</height>
+                      </size>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
@@ -230,7 +458,10 @@
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="widget_7" native="true">
+              <widget class="QWidget" name="widget_options" native="true">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -238,6 +469,18 @@
                 </sizepolicy>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="QWidget" name="widget_8" native="true">
                   <property name="sizePolicy">
@@ -247,13 +490,58 @@
                    </sizepolicy>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">background-color: rgb(239, 242, 245);</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_9">
+                   <property name="spacing">
+                    <number>7</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item>
                     <widget class="QTabWidget" name="tabWidget">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(239, 242, 245);</string>
+                     </property>
+                     <property name="tabShape">
+                      <enum>QTabWidget::Rounded</enum>
+                     </property>
                      <property name="currentIndex">
                       <number>1</number>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>48</width>
+                       <height>48</height>
+                      </size>
+                     </property>
+                     <property name="elideMode">
+                      <enum>Qt::ElideNone</enum>
+                     </property>
+                     <property name="usesScrollButtons">
+                      <bool>true</bool>
+                     </property>
+                     <property name="documentMode">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tabsClosable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="movable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="tabBarAutoHide">
+                      <bool>false</bool>
                      </property>
                      <widget class="QWidget" name="tab_4">
                       <attribute name="title">
@@ -265,28 +553,120 @@
                        <string>Enroll</string>
                       </attribute>
                       <layout class="QHBoxLayout" name="horizontalLayout_6">
+                       <property name="spacing">
+                        <number>7</number>
+                       </property>
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>0</number>
+                       </property>
                        <item>
                         <widget class="QWidget" name="widget_14" native="true">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">background-color: rgb(255, 255, 255);</string>
+                         </property>
                          <layout class="QVBoxLayout" name="verticalLayout_12">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>10</number>
+                          </property>
                           <item>
                            <widget class="QWidget" name="widget_21" native="true">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>1</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: rgb(255, 255, 255);</string>
+                            </property>
                             <layout class="QVBoxLayout" name="verticalLayout_13">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>11</number>
+                             </property>
                              <item>
-                              <widget class="QLabel" name="label_6">
+                              <widget class="QWidget" name="widget_7" native="true">
                                <property name="sizePolicy">
                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                                  <horstretch>0</horstretch>
                                  <verstretch>0</verstretch>
                                 </sizepolicy>
                                </property>
-                               <property name="font">
-                                <font>
-                                 <bold>true</bold>
-                                </font>
-                               </property>
-                               <property name="text">
-                                <string>Sampling Type</string>
-                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_35">
+                                <property name="bottomMargin">
+                                 <number>11</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="label_6">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>18px</family>
+                                    <pointsize>-1</pointsize>
+                                    <italic>false</italic>
+                                    <bold>false</bold>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 428px;
+left: 48px;
+width: 122px;
+height: 22px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal medium var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+font: normal normal medium 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>Sampling Type</string>
+                                  </property>
+                                  <property name="alignment">
+                                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
                               </widget>
                              </item>
                              <item>
@@ -297,12 +677,50 @@
                                  <verstretch>0</verstretch>
                                 </sizepolicy>
                                </property>
+                               <property name="styleSheet">
+                                <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 469px;
+left: 48px;
+width: 50px;
+height: 21px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                               </property>
                                <property name="title">
                                 <string>Finger</string>
                                </property>
+                               <property name="alignment">
+                                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                               </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                                <property name="topMargin">
+                                 <number>11</number>
+                                </property>
                                 <item>
-                                 <widget class="QComboBox" name="comboBox_2"/>
+                                 <widget class="QComboBox" name="comboBox_2">
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: #EFF2F5;
+/* Layout Properties */
+top: 496px;
+left: 48px;
+width: 216px;
+height: 40px;
+/* UI Properties */
+border-radius: 7px;
+opacity: 1;</string>
+                                  </property>
+                                  <item>
+                                   <property name="text">
+                                    <string>4-4-2 finger</string>
+                                   </property>
+                                  </item>
+                                 </widget>
                                 </item>
                                 <item>
                                  <widget class="QRadioButton" name="radioButton_2">
@@ -326,17 +744,73 @@
                           </item>
                           <item>
                            <widget class="QWidget" name="widget_22" native="true">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>1</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="layoutDirection">
+                             <enum>Qt::LeftToRight</enum>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: rgb(255, 255, 255);</string>
+                            </property>
                             <layout class="QVBoxLayout" name="verticalLayout_14">
+                             <property name="topMargin">
+                              <number>11</number>
+                             </property>
                              <item>
-                              <widget class="QLabel" name="label_7">
-                               <property name="font">
-                                <font>
-                                 <bold>true</bold>
-                                </font>
+                              <widget class="QWidget" name="widget_46" native="true">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
                                </property>
-                               <property name="text">
-                                <string>Capture Options</string>
-                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_18">
+                                <item>
+                                 <widget class="QLabel" name="label_7">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>18px</family>
+                                    <pointsize>-1</pointsize>
+                                    <italic>false</italic>
+                                    <bold>false</bold>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 428px;
+left: 48px;
+width: 122px;
+height: 22px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal medium var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+font: normal normal medium 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>Capture Options</string>
+                                  </property>
+                                  <property name="alignment">
+                                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
                               </widget>
                              </item>
                              <item>
@@ -347,22 +821,78 @@
                                  <verstretch>0</verstretch>
                                 </sizepolicy>
                                </property>
+                               <property name="styleSheet">
+                                <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 469px;
+left: 48px;
+width: 50px;
+height: 21px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                               </property>
                                <property name="title">
                                 <string>Capture mode</string>
                                </property>
+                               <property name="alignment">
+                                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                               </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                                <property name="topMargin">
+                                 <number>11</number>
+                                </property>
                                 <item>
-                                 <widget class="QPushButton" name="CaptureLiveModeButton">
-                                  <property name="text">
-                                   <string>Live</string>
+                                 <widget class="QWidget" name="widget_48" native="true">
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: #EFF2F5;</string>
                                   </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QPushButton" name="pushButton_5">
-                                  <property name="text">
-                                   <string>Auto capture</string>
-                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_19">
+                                   <item>
+                                    <widget class="QPushButton" name="CaptureLiveModeButton">
+                                     <property name="styleSheet">
+                                      <string notr="true">background-color: rgb(255, 255, 255);
+/* Layout Properties */
+top: 664px;
+left: 68px;
+width: 34px;
+height: 22px;
+/* UI Properties */
+text-align: left;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>Live</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QPushButton" name="pushButton_5">
+                                     <property name="styleSheet">
+                                      <string notr="true">background-color: #EFF2F5;
+/* Layout Properties */
+top: 664px;
+left: 139px;
+width: 107px;
+height: 22px;
+/* UI Properties */
+text-align: left;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>Auto capture</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
                                  </widget>
                                 </item>
                                </layout>
@@ -376,17 +906,60 @@
                                  <verstretch>0</verstretch>
                                 </sizepolicy>
                                </property>
+                               <property name="styleSheet">
+                                <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 469px;
+left: 48px;
+width: 50px;
+height: 21px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                               </property>
                                <property name="title">
                                 <string>Auto capture score</string>
                                </property>
+                               <property name="alignment">
+                                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                               </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                <property name="topMargin">
+                                 <number>11</number>
+                                </property>
                                 <item>
-                                 <widget class="QSpinBox" name="spinBox"/>
+                                 <widget class="QSpinBox" name="spinBox">
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: #EFF2F5;
+/* Layout Properties */
+top: 744px;
+left: 48px;
+width: 408px;
+height: 40px;
+/* UI Properties */
+border-radius: 7px;
+opacity: 1;</string>
+                                  </property>
+                                 </widget>
                                 </item>
                                </layout>
                               </widget>
                              </item>
                             </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QWidget" name="widget_47" native="true">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>1</verstretch>
+                             </sizepolicy>
+                            </property>
                            </widget>
                           </item>
                          </layout>
@@ -395,6 +968,18 @@
                        <item>
                         <widget class="QWidget" name="widget_15" native="true">
                          <layout class="QVBoxLayout" name="verticalLayout_10">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
                           <item>
                            <widget class="QWidget" name="widget_16" native="true">
                             <property name="sizePolicy">
@@ -403,12 +988,30 @@
                               <verstretch>1</verstretch>
                              </sizepolicy>
                             </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: rgb(255, 255, 255);</string>
+                            </property>
                             <layout class="QHBoxLayout" name="horizontalLayout_7">
                              <item>
                               <widget class="QWidget" name="widget_19" native="true">
                                <layout class="QVBoxLayout" name="verticalLayout_11">
                                 <item>
                                  <widget class="QLabel" name="label_5">
+                                  <property name="styleSheet">
+                                   <string notr="true">font-size:24px;
+/* Layout Properties */
+top: 424px;
+left: 616px;
+width: 91px;
+height: 28px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
+                                  </property>
                                   <property name="text">
                                    <string>Preview</string>
                                   </property>
@@ -465,6 +1068,18 @@
                               <verstretch>3</verstretch>
                              </sizepolicy>
                             </property>
+                            <property name="styleSheet">
+                             <string notr="true">background-color: rgb(255, 255, 255);</string>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_34">
+                             <item>
+                              <widget class="QLabel" name="preview_enroll">
+                               <property name="text">
+                                <string>IMG</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </widget>
                           </item>
                          </layout>
@@ -486,9 +1101,47 @@
                    </item>
                    <item>
                     <widget class="QWidget" name="widget_13" native="true">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(255, 255, 255);</string>
+                     </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_5">
+                      <property name="spacing">
+                       <number>14</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>20</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>11</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>20</number>
+                      </property>
                       <item>
                        <widget class="QPushButton" name="pushButton_2">
+                        <property name="styleSheet">
+                         <string notr="true">
+font-size:18px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-ffffff);
+text-align: center;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+
+/* Layout Properties */
+top: 912px;
+left: 48px;
+width: 600px;
+height: 56px;
+/* UI Properties */
+background-color: rgb(97, 110, 133);
+border-radius: 28px;
+opacity: 1;
+
+</string>
+                        </property>
                         <property name="text">
                          <string>Start</string>
                         </property>
@@ -498,6 +1151,31 @@
                        <widget class="QPushButton" name="pushButton_3">
                         <property name="enabled">
                          <bool>false</bool>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 929px;
+left: 785px;
+width: 118px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-cfd6e4);
+text-align: center;
+letter-spacing: 0px;
+color: #CFD6E4;
+opacity: 1;
+
+/* Layout Properties */
+top: 912px;
+left: 664px;
+width: 360px;
+height: 56px;
+/* UI Properties */
+background-color: rgb(239, 242, 245);
+border-radius: 28px;
+opacity: 1;</string>
                         </property>
                         <property name="text">
                          <string>Force Capture</string>
@@ -518,7 +1196,22 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(239, 242, 245);</string>
+                  </property>
                   <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
                    <item>
                     <widget class="QLabel" name="label_2">
                      <property name="sizePolicy">
@@ -529,11 +1222,24 @@
                      </property>
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <bold>true</bold>
                       </font>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true"/>
+                      <string notr="true">font-size : 18px;
+/* Layout Properties */
+top: 834px;
+left: 1065px;
+width: 111px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
                      </property>
                      <property name="text">
                       <string>Quality Score</string>
@@ -584,7 +1290,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background-color: rgb(239, 242, 245);</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_15">
              <item>
@@ -595,13 +1301,32 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <layout class="QHBoxLayout" name="horizontalLayout_12">
                 <item>
                  <widget class="QLabel" name="label_9">
                   <property name="font">
                    <font>
+                    <pointsize>-1</pointsize>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font-size : 24px;
+/* Layout Properties */
+top: 155px;
+left: 1248px;
+width: 92px;
+height: 28px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
                   </property>
                   <property name="text">
                    <string>Capture</string>
@@ -613,6 +1338,9 @@
              </item>
              <item>
               <widget class="QWidget" name="widget_24" native="true">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_19">
                 <item>
                  <widget class="QWidget" name="widget_29" native="true">
@@ -891,9 +1619,29 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <layout class="QHBoxLayout" name="horizontalLayout_13">
                 <item>
                  <widget class="QLabel" name="label_10">
+                  <property name="styleSheet">
+                   <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 705px;
+left: 1248px;
+width: 108px;
+height: 21px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+font: normal normal normal 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                  </property>
                   <property name="text">
                    <string>Quality Score</string>
                   </property>
@@ -908,6 +1656,23 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="label_11">
+                  <property name="styleSheet">
+                   <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 705px;
+left: 1248px;
+width: 108px;
+height: 21px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+font: normal normal normal 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                  </property>
                   <property name="text">
                    <string>Records</string>
                   </property>
@@ -934,9 +1699,28 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <layout class="QVBoxLayout" name="verticalLayout_16">
                 <item>
                  <widget class="QGroupBox" name="groupBox_5">
+                  <property name="styleSheet">
+                   <string notr="true">font-size:18px;
+
+/* Layout Properties */
+top: 764px;
+left: 1248px;
+width: 59px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
+                  </property>
                   <property name="title">
                    <string>Person</string>
                   </property>
@@ -952,16 +1736,70 @@
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
+                        <property name="styleSheet">
+                         <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 705px;
+left: 1248px;
+width: 108px;
+height: 21px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+font: normal normal normal 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                        </property>
                         <property name="text">
                          <string>Legal Name</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="lineEdit_2"/>
+                       <widget class="QLineEdit" name="lineEdit_2">
+                        <property name="styleSheet">
+                         <string notr="true">/* Layout Properties */
+top: 832px;
+left: 1248px;
+width: 296px;
+height: 44px;
+/* UI Properties */
+border: 4px solid var(--unnamed-color-eff2f5);
+border: 4px solid #EFF2F5;
+border-radius: 7px;
+opacity: 1;</string>
+                        </property>
+                       </widget>
                       </item>
                       <item>
                        <widget class="QPushButton" name="pushButton_6">
+                        <property name="styleSheet">
+                         <string notr="true">font-size: 18px;
+/* Layout Properties */
+top: 185px;
+left: 946px;
+width: 94px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: center;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+/* Layout Properties */
+top: 912px;
+left: 1248px;
+width: 304px;
+height: 56px;
+/* UI Properties */
+background-color: rgb(239, 242, 245);
+border-radius: 28px;
+opacity: 1;</string>
+                        </property>
                         <property name="text">
                          <string>Enroll</string>
                         </property>
@@ -981,16 +1819,70 @@
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
+                        <property name="styleSheet">
+                         <string notr="true">font-size:18px;
+/* Layout Properties */
+top: 705px;
+left: 1248px;
+width: 108px;
+height: 21px;
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+font: normal normal normal 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;</string>
+                        </property>
                         <property name="text">
                          <string>National identification number</string>
                         </property>
                        </widget>
                       </item>
                       <item>
-                       <widget class="QLineEdit" name="lineEdit_3"/>
+                       <widget class="QLineEdit" name="lineEdit_3">
+                        <property name="styleSheet">
+                         <string notr="true">/* Layout Properties */
+top: 832px;
+left: 1248px;
+width: 296px;
+height: 44px;
+/* UI Properties */
+border: 4px solid var(--unnamed-color-eff2f5);
+border: 4px solid #EFF2F5;
+border-radius: 7px;
+opacity: 1;</string>
+                        </property>
+                       </widget>
                       </item>
                       <item>
                        <widget class="QPushButton" name="pushButton_7">
+                        <property name="styleSheet">
+                         <string notr="true">font-size: 18px;
+/* Layout Properties */
+top: 185px;
+left: 946px;
+width: 94px;
+height: 22px;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: center;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+/* Layout Properties */
+top: 912px;
+left: 1568px;
+width: 304px;
+height: 56px;
+/* UI Properties */
+background-color: rgb(239, 242, 245);
+border-radius: 28px;
+opacity: 1;</string>
+                        </property>
                         <property name="text">
                          <string>Clear Database</string>
                         </property>
@@ -1021,13 +1913,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1290</width>
-     <height>21</height>
+     <width>1917</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="img.qrc"/>
+ </resources>
  <connections/>
 </ui>

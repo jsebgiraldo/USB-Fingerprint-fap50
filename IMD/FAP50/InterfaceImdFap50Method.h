@@ -2,6 +2,7 @@
 #define INTERFACEIMDFAP50METHOD_H
 
 #include <cstddef>
+#include <minwindef.h>
 typedef struct {
     double x, y;
 } ImdPoint2d;
@@ -79,7 +80,7 @@ struct ImageProperty {
     E_FINGER_POSITION pos;
     bool this_scan;
 
-    std::byte* img;
+    BYTE* img;
     long width, height;
     int score_array[SCORE_ARRAY_SIZE];
     int score_size;
@@ -172,7 +173,7 @@ typedef struct {
     void* contours;
 
     float frame_rate;	//The "frame_rate" is image frame rate. Unit:fps (frame per second).
-    std::byte* img;			//The FAP50 image buffer. (1600*1000)
+    BYTE* img;			//The FAP50 image buffer. (1600*1000)
 
     IMD_RESULT result;
 
@@ -180,10 +181,25 @@ typedef struct {
 
 
 extern "C" {
+//__declspec(dllimport) IMD_RESULT __stdcall set_event(Fap50CallbackEvent e);
 __declspec(dllimport) IMD_RESULT __stdcall device_reset();
-__declspec(dllimport) SystemProperty __stdcall get_system_property();
-}
+__declspec(dllimport) IMD_RESULT __stdcall set_system_property(SystemProperty* property);
+__declspec(dllimport) IMD_RESULT __stdcall scan_start(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos);
+__declspec(dllimport) IMD_RESULT __stdcall scan_fingers_start(E_GUI_SHOW_MODE mode, E_FINGER_POSITION* pos_buf, int num);
+__declspec(dllimport) IMD_RESULT __stdcall get_image_status(ImageStatus* status);
+__declspec(dllimport) IMD_RESULT __stdcall save_file(E_GUI_SHOW_MODE mode, E_FINGER_POSITION finger_pos, LPCTSTR file_path);
+__declspec(dllimport) IMD_RESULT __stdcall get_image(ImageProperty& img_property);
+__declspec(dllimport) IMD_RESULT __stdcall usb_switch(BYTE usb_sel);
+__declspec(dllimport) IMD_RESULT __stdcall set_led_speech_standby_mode();
+__declspec(dllimport) IMD_RESULT __stdcall set_burn_code();
+__declspec(dllimport) IMD_RESULT __stdcall user_space(BOOL write, WORD offset, BYTE* data, int len);
+__declspec(dllimport) IMD_RESULT __stdcall scan_cancel();
 
+
+__declspec(dllimport) SystemProperty __stdcall get_system_property();
+
+__declspec(dllimport) bool __stdcall is_scan_busy();
+}
 
 
 #endif // INTERFACEIMDFAP50METHOD_H

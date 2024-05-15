@@ -16,7 +16,6 @@ SOURCES += \
 HEADERS += \
     IMD/FAP50/InterfaceImdFap50Method.h \
     IMD/FAP50/fap50reader.h \
-    InterfaceImdFap50Method.h \
     mainwindow.h
 
 FORMS += \
@@ -29,6 +28,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     Nfiq2Api.dll \
+    img/icon.png \
     lib_imd_fap50_method.dll \
     lib_imd_sensor_api.dll \
     lib_imd_test_method.dll \
@@ -43,3 +43,6 @@ win32: LIBS += $$PWD/lib_imd_test_method.dll
 win32: LIBS += $$PWD/lib_nbis.dll
 win32: LIBS += $$PWD/lib_imd_fap50_method.dll
 win32: LIBS += $$PWD/opencv_world480.dll
+
+RESOURCES += \
+    img.qrc

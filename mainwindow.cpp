@@ -10,8 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    reader50 = new class Fap50Reader();
 
     ui->DisconnectButton->setHidden(true);
+
+    connect(reader50, &Fap50Reader::sig_ImageReady, this, &MainWindow::onImageReady);
+
 }
 
 MainWindow::~MainWindow()
@@ -19,12 +23,33 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::onImageReady(QPixmap Image)
+{
+    ui->preview_enroll->setPixmap(Image.scaled(ui->preview_enroll->width(),ui->preview_enroll->height(),Qt::KeepAspectRatio));
+}
 
 void MainWindow::deviceConnected_action()
 {
     ui->radio_status_devices->setChecked(true);
+    ui->radio_status_devices->setText("Connected");
+
+
+
     ui->DisconnectButton->setHidden(false);
     ui->ConnectButton->setHidden(true);
+    ui->widget_options->setEnabled(true);
+}
+
+void MainWindow::on_DisconnectButton_clicked()
+{
+    ui->radio_status_devices->setChecked(false);
+
+    ui->radio_status_devices->setText("Disconnected");
+
+    ui->DisconnectButton->setHidden(true);
+    ui->ConnectButton->setHidden(false);
+
+    ui->widget_options->setEnabled(false);
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -53,16 +78,11 @@ void MainWindow::on_ConnectButton_clicked()
 }
 
 
-void MainWindow::on_DisconnectButton_clicked()
-{
-    ui->radio_status_devices->setChecked(false);
-    ui->DisconnectButton->setHidden(true);
-    ui->ConnectButton->setHidden(false);
-}
+
 
 
 void MainWindow::on_CaptureLiveModeButton_clicked()
 {
-
+    reader50->get_flat_finger();
 }
 

@@ -18,6 +18,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public:
+    void onImageReady(QPixmap pixmap);
+
 private:
     void deviceConnected_action();
 
