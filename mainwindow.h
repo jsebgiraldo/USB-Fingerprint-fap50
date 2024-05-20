@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "IMD/FAP20/fap20reader.h"
 #include "IMD/FAP50/Fap50reader.h"
 #include <QMainWindow>
 
@@ -19,7 +20,7 @@ public:
     ~MainWindow();
 
 public:
-    void onImageReady(QPixmap pixmap);
+    void onImageReady(Fingerprint Finger);
 
 private:
     void deviceConnected_action();
@@ -33,9 +34,12 @@ private slots:
 
     void on_CaptureLiveModeButton_clicked();
 
+    void on_start_capture_clicked();
+
 private:
     Ui::MainWindow *ui;
 
+    Fap20Reader *reader20 = nullptr;
     Fap50Reader *reader50 = nullptr;
 };
 #endif // MAINWINDOW_H
