@@ -15,19 +15,25 @@ class Fap50Reader : public QObject
     Q_OBJECT
 
 Q_SIGNALS:
-    void sig_ImageReady(const QPixmap &pixmap);
+    void sig_ImageReady(const ImageStatus &pixmap);
+    void sig_samplingdone();
+    void sig_wronghand();
+    void sig_poorquality();
 public:
     Fap50Reader();
 
     bool Detect();
     bool Connect();
 
-    void doWork();
+    void Thread();
 
     void show_image(ImageStatus img_status);
 
+    void callback_fap50_event(IMD_RESULT prompt);
+
     void onTimer();
     bool get_flat_finger();
+    bool sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos);
 
 public slots:
     void enqueueMessage(const QString &message) {

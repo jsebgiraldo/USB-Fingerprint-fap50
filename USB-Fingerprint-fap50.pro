@@ -44,6 +44,7 @@ DISTFILES += \
     Nfiq2Api.dll \
     img/icon.png \
     lib_imd_fap50_method.dll \
+    lib_imd_fap50_method.lib \
     lib_imd_sensor_api.dll \
     lib_imd_test_method.dll \
     lib_nbis.dll \

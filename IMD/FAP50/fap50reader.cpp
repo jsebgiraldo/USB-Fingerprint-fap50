@@ -1,8 +1,10 @@
 #include "Fap50reader.h"
 #include "InterfaceImdFap50Method.h"
+#include "mainwindow.h"
 #include "qdebug.h"
 #include "qimage.h"
 #include "qlogging.h"
+#include "qmessagebox.h"
 #include "qpixmap.h"
 #include <QThread>
 
@@ -11,12 +13,12 @@ Fap50Reader::Fap50Reader()
     m_stop = false;
 
     moveToThread(thread);
-    QObject::connect(thread, &QThread::started, this, &Fap50Reader::doWork);
+    QObject::connect(thread, &QThread::started, this, &Fap50Reader::Thread);
     QObject::connect(thread, &QThread::finished, this, &Fap50Reader::deleteLater);
     thread->start();
 }
 
-void Fap50Reader::doWork() {
+void Fap50Reader::Thread() {
 
     qDebug() << "Thread Start";
 
@@ -36,18 +38,7 @@ void Fap50Reader::doWork() {
 
         if(message.contains("SHOW_FLAT_IMAGE"))
         {
-            thread->msleep(1000);
-            while(is_scan_busy() == true)
-            {
-                ImageStatus img_status;
-                if (get_image_status(&img_status) == IMD_RLT_SUCCESS)
-                    show_image(img_status);
-                if (img_status.is_finger_on == FALSE && img_status.is_flat_done == TRUE)
-                    scan_cancel();
-                thread->msleep(500);
-            }
-
-
+            sampling_finger(GUI_SHOW_MODE_FLAT,FINGER_POSITION_LEFT_FOUR);
         }
 
     }
@@ -55,31 +46,21 @@ void Fap50Reader::doWork() {
 
 void Fap50Reader::show_image(ImageStatus img_status)
 {
-
-
-    ImageProperty img_property;
-    get_image(img_property);
-
-    BYTE* img = img_property.img;
-
-
-    qDebug() << img_status.img << img;
-
-   // emit sig_ImageReady(pixmap);
+    emit sig_ImageReady(img_status);
 }
 
 
-bool Fap50Reader::Detect(){
+bool Fap50Reader::Connect(){
     IMD_RESULT res = device_reset();
     return res == IMD_RLT_SUCCESS ? true : false;
 }
 
-bool Fap50Reader::Connect(){
+bool Fap50Reader::Detect(){
     SystemProperty property = get_system_property();
 
     qDebug() << property.chip_id;
 
-    return property.chip_id == 100992006 ? true : false;;
+    return property.chip_id == 48386 ? true : false;;
 }
 
 void Fap50Reader::onTimer()
@@ -87,21 +68,112 @@ void Fap50Reader::onTimer()
     qDebug() << "onTimer";
 }
 
-bool Fap50Reader::get_flat_finger()
+void callback_fap50_event(IMD_RESULT prompt)
 {
+    QString str;
+
+    switch (prompt) {
+    case IMD_RLT_CLAI_TIMEOUT:
+        str.append(L"Calibration timeout! ");
+        break;
+    case IMD_RLT_SCAN_THREAD_START:
+        str.append(L"Start scanning ... ");
+        break;
+    case IMD_RLT_SCAN_THREAD_END:
+        str.append(L"Scan thread end. ");
+        break;
+    case IMD_RLT_CANT_FIND_ANY_DEVICE:
+        str.append(L"Can not find any device. Need to re-plugin USB. ");
+        break;
+    case IMD_RLT_SCAN_THREAD_IDLE_TIMEOUT:
+        str.append(L"Scan idle timeout. ");
+        break;
+    case IMD_RLT_DCMI_IS_STUCK:
+        str.append(L"DCMI has stopped with no response. ");
+        break;
+    case IMD_RLT_DCMI_TOO_FAST:
+        str.append(L"DCMI is too fast. ");
+        break;
+    case IMD_RLT_USB_READ_IMAGE_EXCEPTION:
+        str.append(L"USB read image exception. ");
+        break;
+    case IMD_RLT_USB_READ_IMAGE_TIMEOUT:
+        str.append(L"USB read image timeout. ");
+        break;
+    case IMD_RLT_RESET_DEVICE_FAIL:
+        str.append(L"Reset device fail. ");
+        break;
+    case IMD_RLT_NO_AVAILABLE_IMAGE:
+        str.append(L"No images available. ");
+        break;
+    case IMD_RLT_CHIP_ID_FAIL:
+        str.append(L"Chip ID is wrong. ");
+        break;
+    default:
+        str.append(L"Something happened!");
+    }
+
+    qDebug() << str;
+}
+
+bool Fap50Reader::sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos)
+{
+
     if (is_scan_busy())
         scan_cancel();
 
+    IMD_RESULT res = scan_start(mode,pos);
+    if(res != IMD_RLT_SUCCESS) return FALSE;
 
-    std::vector< E_FINGER_POSITION> fingers = { FINGER_POSITION_RIGHT_RING, FINGER_POSITION_RIGHT_LITTLE,
-                                         FINGER_POSITION_LEFT_THUMB, FINGER_POSITION_LEFT_INDEX };
-    IMD_RESULT res = scan_fingers_start(GUI_SHOW_MODE_CAPTURE, fingers.data(), fingers.size());
 
-    //IMD_RESULT res = scan_start(GUI_SHOW_MODE_ROLL, FINGER_POSITION_RIGHT_THUMB);
+    ImageStatus img_status;
 
-    qDebug() << res << "scan_start(GUI_SHOW_MODE_FLAT, FINGER_POSITION_RIGHT_THUMB)";
+    while(is_scan_busy() == true)
+    {
+        if (get_image_status(&img_status) == IMD_RLT_SUCCESS)
+            show_image(img_status);
+        if (img_status.is_finger_on == TRUE && img_status.is_flat_done == TRUE)
+        {
+            qDebug() << "flat done";
+            scan_cancel();
+        }
+    }
 
+    ImageProperty p;
+    p.mode = mode;
+    p.pos = pos;
+    p.this_scan = TRUE;
+    res = get_image(p);
+    img_status.result = res;
+
+    if(res==IMD_RLT_SUCCESS)
+    {
+        emit sig_samplingdone();
+        return TRUE;
+    }
+
+    switch (img_status.result) {
+    case IMD_RLT_PUT_WRONG_HAND:
+        emit sig_wronghand();
+        break;
+
+    case IMD_RLT_POOR_QUALITY_AND_CANTACT_IRON:
+    case IMD_RLT_POOR_NFIQ_QUALITY:
+        emit sig_poorquality();
+        break;
+
+    case IMD_RLT_POOR_QUALITY_AND_WRONG_HAND:
+        emit sig_wronghand();
+        break;
+    default:
+        break;
+    }
+
+    return FALSE;
+}
+
+bool Fap50Reader::get_flat_finger()
+{
     enqueueMessage("SHOW_FLAT_IMAGE");
-
     return false;
 }

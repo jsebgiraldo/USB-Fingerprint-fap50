@@ -1,8 +1,14 @@
-#ifndef INTERFACEIMDFAP50METHOD_H
-#define INTERFACEIMDFAP50METHOD_H
-
-#include <cstddef>
+#pragma once
 #include <minwindef.h>
+#ifdef BUILD_IMD_DLL
+#define IMD_STD_API(type)  extern "C" __declspec(dllexport) type __stdcall
+#define EXPORT_IMD_DLL(type) __declspec(dllexport) type
+#else
+#define IMD_STD_API(type)  extern "C" __declspec(dllimport) type __stdcall
+#define EXPORT_IMD_DLL(type) __declspec(dllimport) type
+#endif
+
+
 typedef struct {
     double x, y;
 } ImdPoint2d;
@@ -11,12 +17,14 @@ typedef struct {
     ImdPoint2d pa, pb, pc, pd, cntr;
     double angle;
 } ImdDiamond;
+
 enum E_GUI_SHOW_MODE {
     GUI_SHOW_MODE_NONE,
     GUI_SHOW_MODE_CAPTURE,	//scan fingerprints immediately
     GUI_SHOW_MODE_ROLL,
     GUI_SHOW_MODE_FLAT,
 };
+
 enum E_FINGER_POSITION {
     FINTER_POSITION_UNKNOW_FINGER = 0,
 
@@ -25,6 +33,7 @@ enum E_FINGER_POSITION {
     FINGER_POSITION_RIGHT_MIDDLE,
     FINGER_POSITION_RIGHT_RING,
     FINGER_POSITION_RIGHT_LITTLE,
+
     FINGER_POSITION_LEFT_THUMB,
     FINGER_POSITION_LEFT_INDEX,
     FINGER_POSITION_LEFT_MIDDLE,
@@ -45,45 +54,52 @@ enum NFIQ_VERSION {
 };
 
 typedef struct {
+    /** (TODO) After reset, these variables will be set to default values. */
+
     E_FINGER_POSITION finger_position;
+
     int png_compress_ratio;		/** The PNG compression ratio is 0~9. (default:9) */
     int jp2_quality;			/** The Jpeg2000 quality level is 0~1000. (default:750)
                                  Zero is loseless compression. */
+
     float wsq_bit_rate;			/** The bit rate is set as follows:
                                  2.25 yields around 5:1 compression
                                  0.75 yields around 15:1 compression. (default) */
     char* wsq_comment_text;		/** The WSQ comment default is NULL. */
 
-    NFIQ_VERSION nfiq_ver;			//default:NFIQ_V1
+    NFIQ_VERSION nfiq_ver;				//default:NFIQ_V1
     int nfiq_score_minimum_acceptable;	//1~5, default:3
     int nfiq2_score_minimum_acceptable;	//0~100, default:35
     int speech_language;				//0:EN, 1:CH 2:user's define
-    int speech_volume;				//0:small, 1:medium, 2:large
+    int speech_volume;					//0:small, 1:medium, 2:large
+
     int life_check_en;
+    DWORD scan_timeout_ms;				//unit:ms default:120*1000ms
 
     int image_width, image_height;
     int image_bit_per_pix, image_pix_per_inch;
-    std::byte fap50_lib_ver[3];
-    std::byte opencv_lib_ver[3];		//OpenCV LIB version
-    std::byte nbis_lib_ver[3];		      //NBIS LIB version
-    std::byte nfiq2_lib_ver[3];		//NFIQ2 LIB version
-    std::byte guid[16];
-    int chip_id;
-    std::byte fw_ver[3];				//[1]Major, [0]Minor, [2]Type
-
-
+    BYTE fap50_lib_ver[3];
+    BYTE opencv_lib_ver[3];		//OpenCV LIB version
+    BYTE nbis_lib_ver[3];		//NBIS LIB version
+    BYTE nfiq2_lib_ver[3];		//NFIQ2 LIB version
+    BYTE guid[16];
+    WORD chip_id;
+    BYTE fw_ver[3];				//[1]Major, [0]Minor, [2]Type
+    char* product_sn;			//Product Serial Number
+    char* product_brand;		//Product Brand
+    char* product_model;		//Product Model
 } SystemProperty;
 
 #define SCORE_ARRAY_SIZE 4
 struct ImageProperty {
     E_GUI_SHOW_MODE mode;
     E_FINGER_POSITION pos;
-    bool this_scan;
+    BOOL this_scan;
 
-    BYTE* img;
-    long width, height;
-    int score_array[SCORE_ARRAY_SIZE];
-    int score_size;
+    OUT PBYTE img;
+    OUT long width, height;
+    OUT int score_array[SCORE_ARRAY_SIZE];
+    OUT int score_size;
 };
 
 /** iMD result ENUM */
@@ -112,7 +128,6 @@ enum IMD_RESULT {
     //There is a problem with the input parameters of the API.
     IMD_RLT_PARAM_WRONG,
     //No USB devices were found.
-
     IMD_RLT_CANT_FIND_ANY_DEVICE,
     //Device reset failed.
     IMD_RLT_RESET_DEVICE_FAIL,
@@ -157,15 +172,15 @@ typedef struct {
 
     /** Status of roll : If init, the flag is_roll_init will be TRUE.If finished,
         the flag is_roll_done will be TRUE. The value line is the current guideline.*/
-    bool is_roll_init, is_roll_done;
+    BOOL is_roll_init, is_roll_done;
 
     /** Status of flat : The flag is_roll_init will be TRUE if is in init.
         If finished, the flag is_flat_done will be TRUE. */
-    bool is_flat_init, is_flat_done;
+    BOOL is_flat_init, is_flat_done;
 
     int finger_num;		//The "finger_num" is the number of finger presses.
 
-    bool is_finger_on;	//If any finger is touching, the flag "is_finger_on" is TRUE.
+    BOOL is_finger_on;	//If any finger is touching, the flag "is_finger_on" is TRUE.
 
     /** This "contours" is a container for fingerprint outline coordinates, which records the
         coordinates of the rectangle. Use this to extract images for each finger separately.
@@ -179,27 +194,21 @@ typedef struct {
 
 } ImageStatus;
 
+typedef void (*Fap50CallbackEvent)(IMD_RESULT prompt);
 
-extern "C" {
-//__declspec(dllimport) IMD_RESULT __stdcall set_event(Fap50CallbackEvent e);
-__declspec(dllimport) IMD_RESULT __stdcall device_reset();
-__declspec(dllimport) IMD_RESULT __stdcall set_system_property(SystemProperty* property);
-__declspec(dllimport) IMD_RESULT __stdcall scan_start(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos);
-__declspec(dllimport) IMD_RESULT __stdcall scan_fingers_start(E_GUI_SHOW_MODE mode, E_FINGER_POSITION* pos_buf, int num);
-__declspec(dllimport) IMD_RESULT __stdcall get_image_status(ImageStatus* status);
-__declspec(dllimport) IMD_RESULT __stdcall save_file(E_GUI_SHOW_MODE mode, E_FINGER_POSITION finger_pos, LPCTSTR file_path);
-__declspec(dllimport) IMD_RESULT __stdcall get_image(ImageProperty& img_property);
-__declspec(dllimport) IMD_RESULT __stdcall usb_switch(BYTE usb_sel);
-__declspec(dllimport) IMD_RESULT __stdcall set_led_speech_standby_mode();
-__declspec(dllimport) IMD_RESULT __stdcall set_burn_code();
-__declspec(dllimport) IMD_RESULT __stdcall user_space(BOOL write, WORD offset, BYTE* data, int len);
-__declspec(dllimport) IMD_RESULT __stdcall scan_cancel();
+IMD_STD_API(IMD_RESULT) set_event(Fap50CallbackEvent e);
+IMD_STD_API(IMD_RESULT) device_reset(void);
+IMD_STD_API(SystemProperty) get_system_property(void);
+IMD_STD_API(IMD_RESULT) set_system_property(SystemProperty* property);
+IMD_STD_API(IMD_RESULT) scan_start(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos);
+IMD_STD_API(IMD_RESULT) scan_fingers_start(E_GUI_SHOW_MODE mode, E_FINGER_POSITION* pos_buf, int num);
+IMD_STD_API(BOOL) is_scan_busy(void);
+IMD_STD_API(IMD_RESULT) scan_cancel(void);
+IMD_STD_API(IMD_RESULT) get_image_status(ImageStatus* status);
+IMD_STD_API(IMD_RESULT) save_file(E_GUI_SHOW_MODE mode, E_FINGER_POSITION finger_pos, LPCTSTR file_path);
+IMD_STD_API(IMD_RESULT) get_image(ImageProperty& img_property);
+IMD_STD_API(IMD_RESULT) usb_switch(BYTE usb_sel);
+IMD_STD_API(IMD_RESULT) set_led_speech_standby_mode();
+IMD_STD_API(IMD_RESULT) set_burn_code();
+IMD_STD_API(IMD_RESULT) user_space(BOOL is_write, WORD offset, BYTE* data, int len);
 
-
-__declspec(dllimport) SystemProperty __stdcall get_system_property();
-
-__declspec(dllimport) bool __stdcall is_scan_busy();
-}
-
-
-#endif // INTERFACEIMDFAP50METHOD_H
