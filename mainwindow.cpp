@@ -76,12 +76,94 @@ void MainWindow::onWrongHandFap50()
     else if(res == QMessageBox::No)ui->preview_enroll->clear();
 }
 
-void MainWindow::onSamplingDoneFap50()
+void MainWindow::onSamplingDoneFap50(ImageProperty res)
 {
-    status_label->setText("Sampling Done!");
+    if(res.pos == FINGER_POSITION_RIGHT_FOUR)
+    {
+        QImage image(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->right_four_fingers_label->setPixmap((QPixmap::fromImage(image).scaled(ui->right_four_fingers_label->width(),ui->right_four_fingers_label->height(),Qt::KeepAspectRatio)));
 
-    ui->stop_capture_btn->setHidden(true);
-    ui->start_capture->setHidden(false);
+        res.pos = FINGER_POSITION_RIGHT_INDEX;
+        get_image(res);
+        QImage r_index(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->r_index_label->setPixmap((QPixmap::fromImage(r_index).scaled(ui->r_index_label->width(),ui->r_index_label->height(),Qt::KeepAspectRatio)));
+
+        res.pos = FINGER_POSITION_RIGHT_MIDDLE;
+        get_image(res);
+        QImage r_middle(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->r_middle_label->setPixmap((QPixmap::fromImage(r_middle).scaled(ui->r_middle_label->width(),ui->r_middle_label->height(),Qt::KeepAspectRatio)));
+
+        res.pos = FINGER_POSITION_RIGHT_RING;
+        get_image(res);
+        QImage r_ring(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->r_ring_label->setPixmap((QPixmap::fromImage(r_ring).scaled(ui->r_ring_label->width(),ui->r_ring_label->height(),Qt::KeepAspectRatio)));
+
+        res.pos = FINGER_POSITION_RIGHT_LITTLE;
+        get_image(res);
+        QImage r_little(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->r_little_label->setPixmap((QPixmap::fromImage(r_little).scaled(ui->r_little_label->width(),ui->r_little_label->height(),Qt::KeepAspectRatio)));
+
+        status_label->setText("Please put left 4 fingers on the sensor and keep your fingers steady.");
+    }
+
+    else if(res.pos == FINGER_POSITION_LEFT_FOUR)
+    {
+        QImage image(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->left_four_fingers_label->setPixmap((QPixmap::fromImage(image).scaled(ui->left_four_fingers_label->width(),ui->left_four_fingers_label->height(),Qt::KeepAspectRatio)));
+
+        res.pos = FINGER_POSITION_LEFT_INDEX;
+        get_image(res);
+        QImage l_index(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->l_index_label->setPixmap((QPixmap::fromImage(l_index).scaled(ui->l_index_label->width(),ui->l_index_label->height(),Qt::KeepAspectRatio)));
+
+
+        res.pos = FINGER_POSITION_LEFT_MIDDLE;
+        get_image(res);
+        QImage l_middle(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->l_middle_label->setPixmap((QPixmap::fromImage(l_middle).scaled(ui->l_middle_label->width(),ui->l_middle_label->height(),Qt::KeepAspectRatio)));
+
+
+        res.pos = FINGER_POSITION_LEFT_RING;
+        get_image(res);
+        QImage l_ring(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->l_ring_label->setPixmap((QPixmap::fromImage(l_ring).scaled(ui->l_ring_label->width(),ui->l_ring_label->height(),Qt::KeepAspectRatio)));
+
+
+        res.pos = FINGER_POSITION_LEFT_LITTLE;
+        get_image(res);
+        QImage l_little(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->l_little_label->setPixmap((QPixmap::fromImage(l_little).scaled(ui->l_little_label->width(),ui->l_little_label->height(),Qt::KeepAspectRatio)));
+
+
+        status_label->setText("Please put both thumbs on the sensor and keep your fingers steady.");
+    }
+
+
+    else if(res.pos == FINGER_POSITION_BOTH_THUMBS) {
+
+        QImage image(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->bouth_thumb_fingers->setPixmap((QPixmap::fromImage(image).scaled(ui->bouth_thumb_fingers->width(),ui->bouth_thumb_fingers->height(),Qt::KeepAspectRatio)));
+
+        res.pos = FINGER_POSITION_RIGHT_THUMB;
+        get_image(res);
+        QImage r_thumb(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->r_thumb_label->setPixmap((QPixmap::fromImage(r_thumb).scaled(ui->r_thumb_label->width(),ui->r_thumb_label->height(),Qt::KeepAspectRatio)));
+
+        res.pos = FINGER_POSITION_LEFT_INDEX;
+        get_image(res);
+        QImage l_thumb(res.img, res.width, res.height, QImage::Format_Grayscale8);
+        ui->l_thumb_label->setPixmap((QPixmap::fromImage(l_thumb).scaled(ui->l_thumb_label->width(),ui->l_thumb_label->height(),Qt::KeepAspectRatio)));
+
+
+        status_label->setText("Sampling Done!");
+        ui->stop_capture_btn->setHidden(true);
+        ui->start_capture->setHidden(false);
+    }
+
+    for (int var = 0; var < res.score_size; ++var) {
+        qDebug() << res.score_array[var];
+    }
+
 }
 
 void MainWindow::deviceConnected_action()
@@ -149,26 +231,65 @@ void MainWindow::on_ConnectButton_clicked()
 
 void MainWindow::on_CaptureLiveModeButton_clicked()
 {
-    reader50->get_flat_finger();
+
 }
 
 
 void MainWindow::on_start_capture_clicked()
 {
 
+    int sampling_type = E_SAMPLING_TYPE_ERROR;
+
+    if(ui->comboBox_2->currentIndex() == 1)
+    {
+        sampling_type = E_SAMPLING_TYPE_FLAT_ANY_FINGER;
+    }
+    else if(ui->comboBox_2->currentIndex() == 0)
+    {
+        if(ui->flat_check->isChecked()) sampling_type = E_SAMPLING_TYPE_FLAT_442;
+        else if(ui->roll_check->isChecked()) sampling_type = E_SAMPLING_TYPE_FLAT_442_ROLL;
+    }
 
 
-    reader50->get_flat_finger();
+    switch (sampling_type) {
+    case E_SAMPLING_TYPE_FLAT_442:
+        status_label->setText("Please put right 4 fingers on the sensor and keep your fingers steady.");
+
+        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_RIGHT_FOUR");
+        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_LEFT_FOUR");
+        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_BOTH_THUMBS");
+
+        break;
+    case E_SAMPLING_TYPE_FLAT_442_ROLL:
+        status_label->setText("Please put left 4 fingers on the sensor and keep your fingers steady.");
+
+        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_RIGHT_FOUR");
+        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_LEFT_FOUR");
+        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_BOTH_THUMBS");
+
+        break;
+    case E_SAMPLING_TYPE_FLAT_ANY_FINGER:
+        reader50->sampling_finger(GUI_SHOW_MODE_FLAT,FINGER_POSITION_RIGHT_THUMB);
+        break;
+    }
 
     ui->start_capture->setHidden(true);
     ui->stop_capture_btn->setHidden(false);
 
-    status_label->setText("Please put left 4 fingers on the sensor and keep your fingers steady.");
+
 }
 
 
 void MainWindow::on_AutoCaptureModeButton_clicked()
 {
+
+}
+
+
+void MainWindow::on_stop_capture_btn_clicked()
+{
+    ui->stop_capture_btn->setHidden(true);
+    ui->start_capture->setHidden(false);
 
 }
 

@@ -6,6 +6,16 @@
 #include "qlabel.h"
 #include <QMainWindow>
 
+enum E_SAMPLING_TYPE {
+    E_SAMPLING_TYPE_ERROR,
+    E_SAMPLING_TYPE_FLAT_442,
+    E_SAMPLING_TYPE_FLAT_442_ROLL,
+    E_SAMPLING_TYPE_FLAT_ANY_FINGER,
+    E_SAMPLING_TYPE_FLAT,
+    E_SAMPLING_TYPE_ROLL,
+    E_SAMPLING_TYPE_CAPTURE,
+};
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -25,7 +35,7 @@ public:
     void onImageReadyFap50(ImageStatus image);
 
     void onWrongHandFap50();
-    void onSamplingDoneFap50();
+    void onSamplingDoneFap50(ImageProperty res);
 
 private:
     void deviceConnected_action();
@@ -41,9 +51,12 @@ private slots:
 
     void on_CaptureLiveModeButton_clicked();
 
+    void extracted(int &sampling_type);
     void on_start_capture_clicked();
 
     void on_AutoCaptureModeButton_clicked();
+
+    void on_stop_capture_btn_clicked();
 
 public:
     Ui::MainWindow *ui;

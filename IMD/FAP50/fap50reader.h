@@ -10,13 +10,14 @@
 #include <windows.h>
 #include <QTimer>
 
+
 class Fap50Reader : public QObject
 {
     Q_OBJECT
 
 Q_SIGNALS:
     void sig_ImageReady(const ImageStatus &pixmap);
-    void sig_samplingdone();
+    void sig_samplingdone(const ImageProperty &res);
     void sig_wronghand();
     void sig_poorquality();
 public:
@@ -32,7 +33,7 @@ public:
     void callback_fap50_event(IMD_RESULT prompt);
 
     void onTimer();
-    bool get_flat_finger();
+    bool get_flat_finger(QString mode, QString pos);
     bool sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos);
 
 public slots:

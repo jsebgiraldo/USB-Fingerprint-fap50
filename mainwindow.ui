@@ -776,6 +776,15 @@ opacity: 1;</string>
                                 </property>
                                 <item>
                                  <widget class="QComboBox" name="comboBox_2">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
+                                  <property name="layoutDirection">
+                                   <enum>Qt::LeftToRight</enum>
+                                  </property>
                                   <property name="styleSheet">
                                    <string notr="true">background-color: #EFF2F5;
 /* UI Properties */
@@ -787,17 +796,37 @@ opacity: 1;</string>
                                     <string>4-4-2 finger</string>
                                    </property>
                                   </item>
+                                  <item>
+                                   <property name="text">
+                                    <string>Flat any finger</string>
+                                   </property>
+                                  </item>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QRadioButton" name="radioButton_2">
+                                 <widget class="QRadioButton" name="flat_check">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
                                   <property name="text">
                                    <string>Flat</string>
+                                  </property>
+                                  <property name="checked">
+                                   <bool>true</bool>
                                   </property>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QRadioButton" name="radioButton_3">
+                                 <widget class="QRadioButton" name="roll_check">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
                                   <property name="text">
                                    <string>Roll</string>
                                   </property>
@@ -1487,7 +1516,14 @@ opacity: 1;</string>
                 <item>
                  <widget class="QWidget" name="widget_24" native="true">
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgb(255, 255, 255);</string>
+                   <string notr="true">background-color: rgb(255, 255, 255);
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_19">
                    <item>
@@ -1497,7 +1533,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_32" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_29">
                          <item>
+                          <widget class="QLabel" name="r_thumb_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_16">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>R. Thumb</string>
                            </property>
@@ -1513,12 +1562,25 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_36" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_30">
                          <item>
-                          <widget class="QLabel" name="label_17">
+                          <widget class="QLabel" name="r_index_label">
                            <property name="text">
-                            <string>R. Index</string>
+                            <string/>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_27">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="text">
+                            <string>R. Index</string>
                            </property>
                           </widget>
                          </item>
@@ -1529,7 +1591,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_35" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_31">
                          <item>
+                          <widget class="QLabel" name="r_middle_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_18">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>R. Middle</string>
                            </property>
@@ -1545,7 +1620,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_33" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_32">
                          <item>
+                          <widget class="QLabel" name="r_ring_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_19">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>R. Ring</string>
                            </property>
@@ -1561,7 +1649,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_34" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_33">
                          <item>
+                          <widget class="QLabel" name="r_little_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_20">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>R. Little</string>
                            </property>
@@ -1583,7 +1684,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_41" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_28">
                          <item>
+                          <widget class="QLabel" name="l_thumb_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_21">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>L. Thumb</string>
                            </property>
@@ -1599,7 +1713,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_40" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_27">
                          <item>
+                          <widget class="QLabel" name="l_index_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_22">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>L. Index</string>
                            </property>
@@ -1615,7 +1742,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_39" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_26">
                          <item>
+                          <widget class="QLabel" name="l_middle_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_23">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>L. Middle</string>
                            </property>
@@ -1631,7 +1771,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_37" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_25">
                          <item>
+                          <widget class="QLabel" name="l_ring_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_24">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>L. Ring</string>
                            </property>
@@ -1647,7 +1800,20 @@ opacity: 1;</string>
                        <widget class="QWidget" name="widget_38" native="true">
                         <layout class="QVBoxLayout" name="verticalLayout_24">
                          <item>
+                          <widget class="QLabel" name="l_little_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_25">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>L. Little</string>
                            </property>
@@ -1675,7 +1841,20 @@ opacity: 1;</string>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_23">
                          <item>
-                          <widget class="QLabel" name="label_26">
+                          <widget class="QLabel" name="left_four_fingers_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_100">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>Left Four Fingers</string>
                            </property>
@@ -1697,34 +1876,25 @@ opacity: 1;</string>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_22">
                          <item>
-                          <widget class="QLabel" name="label_27">
+                          <widget class="QLabel" name="bouth_thumb_fingers">
                            <property name="text">
-                            <string>L. Thumb</string>
+                            <string/>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
                            </property>
                           </widget>
                          </item>
-                        </layout>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QWidget" name="widget_43" native="true">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                          <horstretch>1</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <layout class="QVBoxLayout" name="verticalLayout_21">
                          <item>
-                          <widget class="QLabel" name="label_28">
-                           <property name="text">
-                            <string>R. Thumb</string>
+                          <widget class="QLabel" name="label_26">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
                            </property>
-                           <property name="alignment">
-                            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                           <property name="text">
+                            <string>L. Thumb R. Thumb</string>
                            </property>
                           </widget>
                          </item>
@@ -1741,7 +1911,20 @@ opacity: 1;</string>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_20">
                          <item>
-                          <widget class="QLabel" name="label_29">
+                          <widget class="QLabel" name="right_four_fingers_label">
+                           <property name="text">
+                            <string/>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QLabel" name="label_8">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
                            <property name="text">
                             <string>Right Four Fingers</string>
                            </property>

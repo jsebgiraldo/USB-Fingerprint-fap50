@@ -22,6 +22,15 @@ void Fap50Reader::Thread() {
 
     qDebug() << "Thread Start";
 
+    QMap<QString, E_GUI_SHOW_MODE> gui_show_map;
+    gui_show_map["GUI_SHOW_MODE_FLAT"] = GUI_SHOW_MODE_FLAT;
+    gui_show_map["GUI_SHOW_MODE_ROLL"] = GUI_SHOW_MODE_ROLL;
+
+    QMap<QString, E_FINGER_POSITION> finger_position_map;
+    finger_position_map["FINGER_POSITION_RIGHT_FOUR"] = FINGER_POSITION_RIGHT_FOUR;
+    finger_position_map["FINGER_POSITION_LEFT_FOUR"] = FINGER_POSITION_LEFT_FOUR;
+    finger_position_map["FINGER_POSITION_BOTH_THUMBS"] = FINGER_POSITION_BOTH_THUMBS;
+
     while (true) {
         m_mutex.lock();
         if (m_stop) {
@@ -34,12 +43,11 @@ void Fap50Reader::Thread() {
         QString message = m_queue.dequeue();
         m_mutex.unlock();
 
-        qDebug() << message;
+        QStringList list = message.split("/");
 
-        if(message.contains("SHOW_FLAT_IMAGE"))
-        {
-            sampling_finger(GUI_SHOW_MODE_FLAT,FINGER_POSITION_LEFT_FOUR);
-        }
+        if(list[0].contains("GET_FINGER"))
+            sampling_finger(gui_show_map[list[1]],finger_position_map[list[2]]);
+
 
     }
 }
@@ -148,7 +156,7 @@ bool Fap50Reader::sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos)
 
     if(res==IMD_RLT_SUCCESS)
     {
-        emit sig_samplingdone();
+        emit sig_samplingdone(p);
         return TRUE;
     }
 
@@ -172,8 +180,8 @@ bool Fap50Reader::sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos)
     return FALSE;
 }
 
-bool Fap50Reader::get_flat_finger()
+bool Fap50Reader::get_flat_finger(QString mode, QString pos)
 {
-    enqueueMessage("SHOW_FLAT_IMAGE");
+    enqueueMessage("GET_FINGER/" + mode + "/" + pos);
     return false;
 }
