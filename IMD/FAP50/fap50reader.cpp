@@ -25,11 +25,15 @@ void Fap50Reader::Thread() {
     QMap<QString, E_GUI_SHOW_MODE> gui_show_map;
     gui_show_map["GUI_SHOW_MODE_FLAT"] = GUI_SHOW_MODE_FLAT;
     gui_show_map["GUI_SHOW_MODE_ROLL"] = GUI_SHOW_MODE_ROLL;
+    gui_show_map["GUI_SHOW_MODE_CAPTURE"] = GUI_SHOW_MODE_CAPTURE;
 
     QMap<QString, E_FINGER_POSITION> finger_position_map;
     finger_position_map["FINGER_POSITION_RIGHT_FOUR"] = FINGER_POSITION_RIGHT_FOUR;
     finger_position_map["FINGER_POSITION_LEFT_FOUR"] = FINGER_POSITION_LEFT_FOUR;
     finger_position_map["FINGER_POSITION_BOTH_THUMBS"] = FINGER_POSITION_BOTH_THUMBS;
+    finger_position_map["FINGER_POSITION_ANY_FINGER"] = FINGER_POSITION_ANY_FINGER;
+
+    finger_position_map["FINGER_POSITION_RIGHT_INDEX"] = FINGER_POSITION_RIGHT_INDEX;
 
     while (true) {
         m_mutex.lock();
@@ -46,9 +50,8 @@ void Fap50Reader::Thread() {
         QStringList list = message.split("/");
 
         if(list[0].contains("GET_FINGER"))
+            qDebug() << list[1] << list[2];
             sampling_finger(gui_show_map[list[1]],finger_position_map[list[2]]);
-
-
     }
 }
 
@@ -137,6 +140,7 @@ bool Fap50Reader::sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos)
     if (is_scan_busy())
         scan_cancel();
 
+    qDebug() << mode << pos;
     IMD_RESULT res = scan_start(mode,pos);
     if(res != IMD_RLT_SUCCESS) return FALSE;
 
@@ -147,18 +151,20 @@ bool Fap50Reader::sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos)
     {
         if (get_image_status(&img_status) == IMD_RLT_SUCCESS)
             show_image(img_status);
-        if (img_status.is_finger_on == TRUE && img_status.is_flat_done == TRUE)
+        if (img_status.is_finger_on == TRUE && (img_status.is_flat_done == TRUE || img_status.is_roll_done == TRUE))
         {
             qDebug() << "flat done";
             scan_cancel();
         }
     }
 
-    if(img_status.is_flat_done == FALSE)
+    if(img_status.is_flat_done == FALSE && img_status.is_roll_done == FALSE)
     {
         emit sig_cancelsampling();
         return FALSE;
     }
+
+    qDebug() << "IMAGE Ready";
 
     ImageProperty p;
     p.mode = mode;

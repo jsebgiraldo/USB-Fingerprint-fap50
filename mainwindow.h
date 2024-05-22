@@ -16,6 +16,11 @@ enum E_SAMPLING_TYPE {
     E_SAMPLING_TYPE_CAPTURE,
 };
 
+enum E_TAB_TYPE {
+    E_TAB_TYPE_CAPTURE,
+    E_TAB_TYPE_ENROLL,
+};
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;

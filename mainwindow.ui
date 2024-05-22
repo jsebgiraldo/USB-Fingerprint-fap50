@@ -1134,7 +1134,17 @@ opacity: 1;</string>
                               </widget>
                              </item>
                              <item>
-                              <widget class="QWidget" name="widget_56" native="true"/>
+                              <widget class="QWidget" name="widget_56" native="true">
+                               <layout class="QVBoxLayout" name="verticalLayout_44">
+                                <item>
+                                 <widget class="QLabel" name="preview_capture">
+                                  <property name="text">
+                                   <string/>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
                              </item>
                             </layout>
                            </widget>

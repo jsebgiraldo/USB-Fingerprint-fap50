@@ -67,7 +67,7 @@ void MainWindow::onImageReadyFap50(ImageStatus m_image)
 
     QImage image(m_image.img, img_w, img_h, QImage::Format_Grayscale8);
     ui->preview_enroll->setPixmap(QPixmap::fromImage(image).scaled(ui->preview_enroll->width(),ui->preview_enroll->height(),Qt::KeepAspectRatio));
-    //ui->score_label->setText(QString::number(m_image.frame_rate));
+    ui->preview_capture->setPixmap(QPixmap::fromImage(image).scaled(ui->preview_capture->width(),ui->preview_capture->height(),Qt::KeepAspectRatio));
 }
 
 void MainWindow::onWrongHandFap50()
@@ -166,10 +166,6 @@ void MainWindow::onSamplingDoneFap50(ImageProperty res)
         ui->start_capture->setHidden(false);
     }
 
-    for (int var = 0; var < res.score_size; ++var) {
-        qDebug() << res.score_array[var];
-    }
-
 }
 
 void MainWindow::deviceConnected_action()
@@ -243,11 +239,11 @@ void MainWindow::on_CaptureLiveModeButton_clicked()
 void MainWindow::on_start_capture_clicked()
 {
 
-    if(ui->tabWidget->currentIndex() == 0)
+    if(ui->tabWidget->currentIndex() == E_TAB_TYPE_CAPTURE)
     {
         qDebug() << "Start Capture";
         on_start_tab_capture();
-    }else if(ui->tabWidget->currentIndex() == 1)
+    }else if(ui->tabWidget->currentIndex() == E_TAB_TYPE_ENROLL)
     {
         qDebug() << "Start Enroll";
         on_start_tab_enroll();
@@ -259,7 +255,10 @@ void MainWindow::on_start_capture_clicked()
 
 void MainWindow::on_start_tab_capture()
 {
+    reader50->get_flat_finger("GUI_SHOW_MODE_ROLL","FINGER_POSITION_RIGHT_INDEX");
 
+    ui->start_capture->setHidden(true);
+    ui->stop_capture_btn->setHidden(false);
 }
 
 void MainWindow::on_start_tab_enroll()
