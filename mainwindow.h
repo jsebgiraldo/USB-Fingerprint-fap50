@@ -53,6 +53,11 @@ private slots:
     void on_CaptureLiveModeButton_clicked();
 
     void extracted(int &sampling_type);
+
+
+    void on_start_tab_capture();
+    void on_start_tab_enroll();
+
     void on_start_capture_clicked();
 
     void on_AutoCaptureModeButton_clicked();

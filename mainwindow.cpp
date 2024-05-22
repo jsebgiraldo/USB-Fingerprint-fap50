@@ -240,10 +240,30 @@ void MainWindow::on_CaptureLiveModeButton_clicked()
 
 }
 
-
 void MainWindow::on_start_capture_clicked()
 {
 
+    if(ui->tabWidget->currentIndex() == 0)
+    {
+        qDebug() << "Start Capture";
+        on_start_tab_capture();
+    }else if(ui->tabWidget->currentIndex() == 1)
+    {
+        qDebug() << "Start Enroll";
+        on_start_tab_enroll();
+    }
+
+
+}
+
+
+void MainWindow::on_start_tab_capture()
+{
+
+}
+
+void MainWindow::on_start_tab_enroll()
+{
     int sampling_type = E_SAMPLING_TYPE_ERROR;
 
     if(ui->comboBox_2->currentIndex() == 1)
@@ -284,7 +304,6 @@ void MainWindow::on_start_capture_clicked()
 
 
 }
-
 
 void MainWindow::on_AutoCaptureModeButton_clicked()
 {
