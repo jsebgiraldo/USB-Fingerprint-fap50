@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(reader50, &Fap50Reader::sig_ImageReady, this, &MainWindow::onImageReadyFap50);
     connect(reader50, &Fap50Reader::sig_wronghand, this, &MainWindow::onWrongHandFap50);
     connect(reader50, &Fap50Reader::sig_samplingdone, this, &MainWindow::onSamplingDoneFap50);
+    connect(reader50, &Fap50Reader::sig_cancelsampling, this, &MainWindow::onCancelSamplingFap50);
 
 }
 
@@ -74,6 +75,11 @@ void MainWindow::onWrongHandFap50()
     int res = QMessageBox::warning(this, "Wrong Hand", "You are using the wrong hand. \nDo you want to scan again?", QMessageBox::Yes | QMessageBox::No);
     if(res == QMessageBox::Yes)on_start_capture_clicked();
     else if(res == QMessageBox::No)ui->preview_enroll->clear();
+}
+
+void MainWindow::onCancelSamplingFap50()
+{
+    status_label->setText("Cancel Sampling!.");
 }
 
 void MainWindow::onSamplingDoneFap50(ImageProperty res)
@@ -261,11 +267,11 @@ void MainWindow::on_start_capture_clicked()
 
         break;
     case E_SAMPLING_TYPE_FLAT_442_ROLL:
-        status_label->setText("Please put left 4 fingers on the sensor and keep your fingers steady.");
+        status_label->setText("Please put left 4 fingers on the sensor and keep your fingers steady. (ROLL)");
 
-        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_RIGHT_FOUR");
-        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_LEFT_FOUR");
-        reader50->get_flat_finger("GUI_SHOW_MODE_FLAT","FINGER_POSITION_BOTH_THUMBS");
+        reader50->get_flat_finger("GUI_SHOW_MODE_ROLL","FINGER_POSITION_RIGHT_FOUR");
+        reader50->get_flat_finger("GUI_SHOW_MODE_ROLL","FINGER_POSITION_LEFT_FOUR");
+        reader50->get_flat_finger("GUI_SHOW_MODE_ROLL","FINGER_POSITION_BOTH_THUMBS");
 
         break;
     case E_SAMPLING_TYPE_FLAT_ANY_FINGER:
@@ -290,6 +296,8 @@ void MainWindow::on_stop_capture_btn_clicked()
 {
     ui->stop_capture_btn->setHidden(true);
     ui->start_capture->setHidden(false);
+
+    reader50->reset();
 
 }
 

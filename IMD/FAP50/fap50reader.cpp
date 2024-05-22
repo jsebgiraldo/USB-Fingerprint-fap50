@@ -63,6 +63,13 @@ bool Fap50Reader::Connect(){
     return res == IMD_RLT_SUCCESS ? true : false;
 }
 
+bool Fap50Reader::reset()
+{
+    enqueueClean();
+    IMD_RESULT res = scan_cancel();
+    return res == IMD_RLT_SUCCESS ? true : false;
+}
+
 bool Fap50Reader::Detect(){
     SystemProperty property = get_system_property();
 
@@ -145,6 +152,12 @@ bool Fap50Reader::sampling_finger(E_GUI_SHOW_MODE mode, E_FINGER_POSITION pos)
             qDebug() << "flat done";
             scan_cancel();
         }
+    }
+
+    if(img_status.is_flat_done == FALSE)
+    {
+        emit sig_cancelsampling();
+        return FALSE;
     }
 
     ImageProperty p;

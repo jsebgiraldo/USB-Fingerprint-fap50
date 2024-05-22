@@ -20,11 +20,14 @@ Q_SIGNALS:
     void sig_samplingdone(const ImageProperty &res);
     void sig_wronghand();
     void sig_poorquality();
+    void sig_cancelsampling();
 public:
     Fap50Reader();
 
     bool Detect();
     bool Connect();
+
+    bool reset();
 
     void Thread();
 
@@ -41,6 +44,10 @@ public slots:
         QMutexLocker locker(&m_mutex);
         m_queue.enqueue(message);
         m_condition.wakeOne();
+    }
+
+    void enqueueClean() {
+        m_queue.clear();
     }
 
     void stop() {

@@ -36,6 +36,7 @@ public:
 
     void onWrongHandFap50();
     void onSamplingDoneFap50(ImageProperty res);
+    void onCancelSamplingFap50();
 
 private:
     void deviceConnected_action();

@@ -91,6 +91,12 @@ opacity: 1;</string>
           </property>
           <item>
            <widget class="QLabel" name="label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -249,7 +255,7 @@ opacity: 1;</string>
                 <item>
                  <widget class="QWidget" name="widget_11" native="true">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>2</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -258,7 +264,7 @@ opacity: 1;</string>
                    <item>
                     <widget class="QGroupBox" name="groupBox">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -282,7 +288,25 @@ opacity: 1;</string>
                      <property name="title">
                       <string>Device</string>
                      </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
                      <layout class="QVBoxLayout" name="verticalLayout_7">
+                      <property name="spacing">
+                       <number>24</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
                       <item>
                        <widget class="QComboBox" name="device_combo_box">
                         <property name="sizePolicy">
@@ -292,7 +316,9 @@ opacity: 1;</string>
                          </sizepolicy>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">background-color: #EFF2F5;
+                         <string notr="true">QComboBox { 
+
+background-color: #EFF2F5;
 
 /* UI Properties */
 letter-spacing: var(--unnamed-character-spacing-0);
@@ -300,7 +326,12 @@ color: var(--unnamed-color-616e85);
 text-align: center;
 letter-spacing: 0px;
 color: #616E85;
-opacity: 1;</string>
+opacity: 1;
+
+padding-left: 8px;
+}
+
+</string>
                         </property>
                         <property name="placeholderText">
                          <string/>
@@ -310,17 +341,17 @@ opacity: 1;</string>
                         </property>
                         <item>
                          <property name="text">
-                          <string>Devices</string>
+                          <string/>
                          </property>
                         </item>
                         <item>
                          <property name="text">
-                          <string>FAP30</string>
+                          <string>IMD Fap30</string>
                          </property>
                         </item>
                         <item>
                          <property name="text">
-                          <string>FAP50</string>
+                          <string>IMD Fap50</string>
                          </property>
                         </item>
                        </widget>
@@ -337,7 +368,18 @@ opacity: 1;</string>
                          <string notr="true">/* UI Properties */
 border: 4px solid #EFF2F5;
 border-radius: 7px;
-opacity: 1;</string>
+opacity: 1;
+
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-18)/19.2px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+font: normal normal normal 18px/19px Helvetica Neue;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+</string>
                         </property>
                         <property name="text">
                          <string>Database path:</string>
@@ -353,7 +395,7 @@ opacity: 1;</string>
                 <item>
                  <widget class="QWidget" name="widget_12" native="true">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                     <horstretch>1</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -367,7 +409,16 @@ opacity: 1;</string>
                   <layout class="QVBoxLayout" name="verticalLayout_8">
                    <item>
                     <widget class="QWidget" name="widget_52" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <layout class="QVBoxLayout" name="verticalLayout_39">
+                      <property name="leftMargin">
+                       <number>20</number>
+                      </property>
                       <item>
                        <widget class="QPushButton" name="DisconnectButton">
                         <property name="sizePolicy">
@@ -390,9 +441,20 @@ letter-spacing: 0px;
 color: #616E85;
 opacity: 1;
 /* UI Properties */
-background-color: rgb(239, 242, 245);
+background: #EFF2F5;
 border-radius: 7px;
-opacity: 1;</string>
+opacity: 1;
+/* UI Properties */
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: center;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+
+padding-right: 16px;
+padding-left: 18px;</string>
                         </property>
                         <property name="text">
                          <string>Disconnect</string>
@@ -420,9 +482,20 @@ text-align: center;
 color: #616E85;
 opacity: 1;
 /* UI Properties */
-background-color: rgb(239, 242, 245);
+background-color: #616E85;
 border-radius: 7px;
-opacity: 1;</string>
+opacity: 1;
+/* UI Properties */
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-ffffff);
+text-align: center;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+
+
+padding-right: 28px;
+padding-left: 30px;</string>
                         </property>
                         <property name="text">
                          <string>Connect</string>
@@ -435,6 +508,12 @@ opacity: 1;</string>
                    <item>
                     <widget class="QWidget" name="widget_51" native="true">
                      <layout class="QVBoxLayout" name="verticalLayout_38">
+                      <property name="leftMargin">
+                       <number>20</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
                       <item>
                        <widget class="QLabel" name="label_4">
                         <property name="font">
@@ -471,6 +550,12 @@ opacity: 1;</string>
                       </sizepolicy>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_37">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
                       <item>
                        <widget class="QRadioButton" name="radio_status_devices">
                         <property name="enabled">
@@ -592,8 +677,127 @@ border-radius: 6.4px;
                    </property>
                    <item>
                     <widget class="QTabWidget" name="tabWidget">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <property name="styleSheet">
-                      <string notr="true">background-color: rgb(239, 242, 245);</string>
+                      <string notr="true">QTabWidget::pane {
+
+    background: white;
+}
+
+
+QTabWidget::tab-bar:top {
+ 
+}
+
+QTabWidget::tab-bar:bottom {
+   
+}
+
+QTabWidget::tab-bar:left {
+
+}
+
+QTabWidget::tab-bar:right {
+
+}
+
+QTabBar::tab {
+background: white;
+    
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-22)/21.6px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-616e85);
+text-align: left;
+font: normal normal bold 22px/22px Helvetica Neue;
+letter-spacing: 0px;
+color: #616E85;
+opacity: 1;
+
+}
+
+QTabBar::tab:selected {
+    background: white;
+
+/* UI Properties */
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-22)/21.6px var(--unnamed-font-family-helvetica-neue);
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-000000);
+text-align: left;
+font: normal normal bold 22px/22px Helvetica Neue;
+letter-spacing: 0px;
+color: #000000;
+opacity: 1;
+}
+
+
+
+QTabBar::tab:!selected:hover {
+}
+
+QTabBar::tab:top:!selected {
+    margin-top: 3px;
+}
+
+QTabBar::tab:bottom:!selected {
+    margin-bottom: 3px;
+}
+
+QTabBar::tab:top, QTabBar::tab:bottom {
+    min-width: 8ex;
+    margin-right: -1px;
+    padding: 5px 10px 5px 10px;
+}
+
+QTabBar::tab:top:selected {
+    border-bottom-color: none;
+}
+
+QTabBar::tab:bottom:selected {
+    border-top-color: none;
+}
+
+QTabBar::tab:top:last, QTabBar::tab:bottom:last,
+QTabBar::tab:top:only-one, QTabBar::tab:bottom:only-one {
+    margin-right: 0;
+}
+
+QTabBar::tab:left:!selected {
+    margin-right: 3px;
+}
+
+QTabBar::tab:right:!selected {
+    margin-left: 3px;
+}
+
+QTabBar::tab:left, QTabBar::tab:right {
+    min-height: 8ex;
+    margin-bottom: -1px;
+    padding: 10px 5px 10px 5px;
+}
+
+QTabBar::tab:left:selected {
+    border-left-color: none;
+}
+
+QTabBar::tab:right:selected {
+    border-right-color: none;
+}
+
+QTabBar::tab:left:last, QTabBar::tab:right:last,
+QTabBar::tab:left:only-one, QTabBar::tab:right:only-one {
+    margin-bottom: 0;
+}
+
+</string>
+                     </property>
+                     <property name="tabPosition">
+                      <enum>QTabWidget::North</enum>
                      </property>
                      <property name="tabShape">
                       <enum>QTabWidget::Rounded</enum>
@@ -771,8 +975,20 @@ opacity: 1;</string>
                                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                                <property name="spacing">
+                                 <number>7</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
                                 <property name="topMargin">
-                                 <number>11</number>
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
                                 </property>
                                 <item>
                                  <widget class="QComboBox" name="comboBox_2">
@@ -789,7 +1005,9 @@ opacity: 1;</string>
                                    <string notr="true">background-color: #EFF2F5;
 /* UI Properties */
 border-radius: 7px;
-opacity: 1;</string>
+opacity: 1;
+
+padding-left:16px;</string>
                                   </property>
                                   <item>
                                    <property name="text">
@@ -907,7 +1125,7 @@ opacity: 1;</string>
                              <item>
                               <widget class="QGroupBox" name="groupBox_3">
                                <property name="sizePolicy">
-                                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                  <horstretch>0</horstretch>
                                  <verstretch>0</verstretch>
                                 </sizepolicy>
@@ -930,8 +1148,20 @@ opacity: 1;</string>
                                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
                                 <property name="topMargin">
-                                 <number>11</number>
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
                                 </property>
                                 <item>
                                  <widget class="QWidget" name="widget_48" native="true">
@@ -945,6 +1175,18 @@ opacity: 1;</string>
                                    <string notr="true">background-color: #EFF2F5;</string>
                                   </property>
                                   <layout class="QHBoxLayout" name="horizontalLayout_19">
+                                   <property name="leftMargin">
+                                    <number>4</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>4</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>4</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>4</number>
+                                   </property>
                                    <item>
                                     <widget class="QPushButton" name="CaptureLiveModeButton">
                                      <property name="sizePolicy">
@@ -964,7 +1206,10 @@ opacity: 1;</string>
 /* UI Properties */
 text-align: left;
 color: #616E85;
-opacity: 1;</string>
+opacity: 1;
+
+padding-left:16px;
+padding-right:18px;</string>
                                      </property>
                                      <property name="text">
                                       <string>Live</string>
@@ -990,7 +1235,10 @@ opacity: 1;</string>
 /* Layout Properties */
 /* UI Properties */
 color: #616E85;
-opacity: 1;</string>
+opacity: 1;
+
+padding-right:18px;
+padding-left:12px;</string>
                                      </property>
                                      <property name="text">
                                       <string>Auto capture</string>
@@ -1028,8 +1276,20 @@ opacity: 1;</string>
                                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                                </property>
                                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
                                 <property name="topMargin">
-                                 <number>11</number>
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
                                 </property>
                                 <item>
                                  <widget class="QSpinBox" name="spinBox">
@@ -1037,7 +1297,8 @@ opacity: 1;</string>
                                    <string notr="true">background-color: #EFF2F5;
 /* UI Properties */
 border-radius: 7px;
-opacity: 1;</string>
+opacity: 1;
+</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -1092,6 +1353,12 @@ opacity: 1;</string>
                                <layout class="QVBoxLayout" name="verticalLayout_11">
                                 <item>
                                  <widget class="QLabel" name="label_5">
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>-1</pointsize>
+                                    <bold>true</bold>
+                                   </font>
+                                  </property>
                                   <property name="styleSheet">
                                    <string notr="true">font-size:24px;
 /* Layout Properties */
@@ -1119,28 +1386,28 @@ opacity: 1;</string>
                               <widget class="QWidget" name="widget_18" native="true">
                                <layout class="QHBoxLayout" name="horizontalLayout_8">
                                 <item>
-                                 <widget class="QCheckBox" name="checkBox">
+                                 <widget class="QCheckBox" name="l_fingers_check">
                                   <property name="text">
                                    <string/>
                                   </property>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QCheckBox" name="checkBox_4">
+                                 <widget class="QCheckBox" name="r_fingers_check">
                                   <property name="text">
                                    <string/>
                                   </property>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QCheckBox" name="checkBox_3">
+                                 <widget class="QCheckBox" name="any_finger_check">
                                   <property name="text">
                                    <string/>
                                   </property>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QCheckBox" name="checkBox_2">
+                                 <widget class="QCheckBox" name="thumbs_check">
                                   <property name="text">
                                    <string/>
                                   </property>
@@ -1249,9 +1516,7 @@ opacity: 1;
 /* UI Properties */
 background-color: rgb(97, 110, 133);
 border-radius: 28px;
-opacity: 1;
-
-</string>
+opacity: 1;</string>
                         </property>
                         <property name="text">
                          <string>Start</string>
@@ -1388,6 +1653,11 @@ opacity: 1;</string>
                    </item>
                    <item>
                     <widget class="Line" name="line">
+                     <property name="styleSheet">
+                      <string notr="true">/* UI Properties */
+gridline-color: rgb(0, 0, 0);
+opacity: 1;</string>
+                     </property>
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
